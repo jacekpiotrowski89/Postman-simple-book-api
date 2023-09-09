@@ -17,9 +17,8 @@
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"const accessToken = (pm.response.json().accessToken)\r",
-							"pm.collectionVariables.set(\"Token\", accessToken);\r",
-							"//console.log(pm.response.json().accessToken)\r",
-							""
+							"    pm.collectionVariables.set(\"Token\", accessToken);\r",
+							"    //console.log(pm.response.json().accessToken)"
 						],
 						"type": "text/javascript"
 					}
@@ -32,13 +31,9 @@
 							" let email=emailuuid()+'@domain.com'\r",
 							" pm.environment.set('email',email)\r",
 							"\r",
-							" const usernameuuid = require('uuid')\r",
+							"const usernameuuid = require('uuid')\r",
 							" let username=usernameuuid()\r",
-							" pm.environment.set('username', username)\r",
-							"\r",
-							"\r",
-							"\r",
-							""
+							" pm.environment.set('username', username)"
 						],
 						"type": "text/javascript"
 					}
@@ -78,13 +73,9 @@
 							"pm.test(\"Status 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"\r",
 							"const response = pm.response.json();\r",
-							"\r",
 							"//console.log(response.status);\r",
-							"\r",
 							"//console.log(response['status']);\r",
-							"\r",
 							"pm.test(\"API status is OK\", () => {\r",
 							"    pm.expect(response.status).to.eql(\"OK\");\r",
 							"});"
@@ -118,22 +109,13 @@
 							"pm.test(\"Status 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"\r",
 							"const response = pm.response.json();\r",
-							"\r",
 							"const nonfictionbook = response.filter((book) => book.available === true);\r",
-							"\r",
-							"\r",
-							"console.log(nonfictionbook[0]);\r",
-							"\r",
+							"//console.log(nonfictionbook[0]);\r",
 							"const book = nonfictionbook[0];\r",
-							"\r",
-							"\r",
-							"\r",
 							"if (book) {\r",
 							"    pm.globals.set(\"bookid\", book.id);\r",
 							"}\r",
-							"\r",
 							"pm.test(\"Book Found\", () => {\r",
 							"    pm.expect(book).to.be.an('object');\r",
 							"    pm.expect(book.available).to.be.true;\r",
@@ -185,13 +167,8 @@
 							"pm.test(\"Status 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"\r",
 							"const response = pm.response.json ();\r",
-							"\r",
-							"\r",
-							"console.log(response['current-stock']);\r",
-							"\r",
-							"\r",
+							"//console.log(response['current-stock']);\r",
 							"pm.test(\"Is in stock\", function () {\r",
 							"    pm.expect(response['current-stock']).to.be.above(0);\r",
 							"});"
@@ -224,13 +201,6 @@
 						"books",
 						":bookid"
 					],
-					"query": [
-						{
-							"key": "",
-							"value": null,
-							"disabled": true
-						}
-					],
 					"variable": [
 						{
 							"key": "bookid",
@@ -251,13 +221,10 @@
 							"pm.test(\"Status 201\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
+							"const orderId = (pm.response.json().orderId); \r",
+							"pm.collectionVariables.set(\"orderId\", orderId);\r",
 							"\r",
-							"const response = pm.response.json (); \r",
-							"\r",
-							"pm.globals.set(\"orderid\", response.orderId);\r",
-							"\r",
-							" var jsonData = JSON.parse(responseBody);\r",
-							"pm.environment.set(\"access_token\", jsonData.access_token);"
+							"console.log(orderId)"
 						],
 						"type": "text/javascript"
 					}
@@ -287,7 +254,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "\r\n{\r\n  \"bookId\": {{bookid}},\r\n  \"customerName\": \"{{$randomFullName}}\"\r\n}",
+					"raw": "{\r\n  \"bookId\": {{bookid}},\r\n  \"customerName\": \"{{$randomFullName}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -353,18 +320,6 @@
 					],
 					"path": [
 						"orders"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": "",
-							"disabled": true
-						},
-						{
-							"key": null,
-							"value": "",
-							"disabled": true
-						}
 					]
 				}
 			},
@@ -422,7 +377,7 @@
 					"variable": [
 						{
 							"key": "orderid",
-							"value": "{{orderid}}"
+							"value": "{{orderId}}"
 						}
 					]
 				}
@@ -478,7 +433,7 @@
 					"variable": [
 						{
 							"key": "orderid",
-							"value": "{{orderid}}"
+							"value": "{{orderId}}"
 						}
 					]
 				}
@@ -534,7 +489,7 @@
 					"variable": [
 						{
 							"key": "orderid",
-							"value": "{{orderid}}"
+							"value": "{{orderId}}"
 						}
 					]
 				}
@@ -571,7 +526,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"customerName\": \"John\"\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -590,7 +545,7 @@
 					"variable": [
 						{
 							"key": "orderid",
-							"value": "-R16bEhZHpHQoRsD8S6zM"
+							"value": "xxxxxxxxxx"
 						}
 					]
 				}
@@ -626,6 +581,16 @@
 		{
 			"key": "Token",
 			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "orderId",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "bookid",
+			"value": "5",
 			"type": "default"
 		}
 	]
